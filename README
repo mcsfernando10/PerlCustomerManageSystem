@@ -35,3 +35,12 @@ cd PerlCustomerManageSystem
 
 ## To run service
 script/perlcustomermanagesystem_server.pl --port 80
+
+## To create model
+script/perlcustomermanagesystem_create.pl model Customer
+
+## To create controller
+script/perlcustomermanagesystem_create.pl controller Customer
+
+## To create common view
+script/perlcustomermanagesystem_create.pl view HTML TT
