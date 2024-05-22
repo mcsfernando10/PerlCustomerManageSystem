@@ -44,3 +44,6 @@ script/perlcustomermanagesystem_create.pl controller Customer
 
 ## To create common view
 script/perlcustomermanagesystem_create.pl view HTML TT
+
+## Create SQLite DB
+sqlite3 PerlCustomerDetail.db < db-init-script.sql

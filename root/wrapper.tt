@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>[% title %]</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">	
+        <header class="text-center my-4">
+            <h1>[% headerText %]</h1>
+        </header>
+    </div>
+
+    <hr class="border border-primary border-2 opacity-65">
+
+    <main>
+        [% content %]
+    </main>
+
+    <hr class="border border-primary border-2 opacity-65">
+
+    <div class="container">
+        <footer class="text-center my-4">
+            <p>&copy; 2024 Customer Detail Application</p>
+        </footer>
+    </div>
+    <script src="/static/jquery-3.2.1.slim.min.js"></script>
+    <script src="/static/popper.min.js"></script>
+    <script src="/static/bootstrap.min.js"></script>
+</body>
+</html>

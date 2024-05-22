@@ -1,33 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Customer List</title>
-    <style>
-         table {
-             font-family: arial, sans-serif;
-             border-collapse: collapse;
-             width: 100%;
-         }
-
-         td, th {
-             border: 1px solid #dddddd;
-             text-align: left;
-             padding: 8px;
-         }
-
-         tr:nth-child(even) {
-             background-color: #dddddd;
-         }
-    </style>
-</head>
-<body>
-    <h1>Customer List</h1>
-    <table>
+[% title = 'Customer List' headerText = 'Customer List' %]
+    <table class="table">
+        <thead>
         <tr>
             <th>Customer Name</th>
             <th>Email Address</th>
             <th>Phone Number</th>
         </tr>
+        </thead>
+        <tbody>
 	[% FOREACH customer IN customers %]
 	<tr>
 	    <td>[% customer.name %]</td>
@@ -35,6 +15,5 @@
 	    <td>[% customer.phone_number %]</td>
 	</tr>	
 	[% END %]
+        </tbody>
     </table>
-</body>
-</html>
