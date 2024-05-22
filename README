@@ -1,1 +1,49 @@
-Run script/perlcustomermanagesystem_server.pl to test the application.
+## Install cpan
+curl -L https://cpanmin.us | perl - --sudo App::cpanminus
+
+## Install Catalyst
+cpanm Catalyst::Devel
+
+## Install Moose
+cpan Moose
+
+sudo yum update
+sudo yum install wget
+sudo yum install -y perl-CPAN
+sudo perl -MCPAN -e shell
+sudo cpan CPAN
+sudo cpan App::cpanminus
+sudo cpanm Catalyst::Runtime Moose
+sudo cpanm Catalyst::Model::DBIC::Schema
+sudo cpanm Catalyst::View::TT
+
+## Verify installation of Catalyst and Moose (Output should be the version)
+perl -MCatalyst::Runtime -e 'print $Catalyst::Runtime::VERSION'
+perl -MMoose -e 'print $Moose::VERSION'
+
+## Install Catalyst::Devel
+sudo cpanm Catalyst::Devel
+
+## Install DBIX
+sudo cpanm DBIx::Class DBIx::Class::Schema DBI DBD::SQLite
+
+## Create Catalyst app
+catalyst.pl PerlCustomerManageSystem
+
+## Change directory to newly created project
+cd PerlCustomerManageSystem
+
+## To run service
+script/perlcustomermanagesystem_server.pl --port 80
+
+## To create model
+script/perlcustomermanagesystem_create.pl model Customer
+
+## To create controller
+script/perlcustomermanagesystem_create.pl controller Customer
+
+## To create common view
+script/perlcustomermanagesystem_create.pl view HTML TT
+
+## Create SQLite DB
+sqlite3 PerlCustomerDetail.db < db-init-script.sql

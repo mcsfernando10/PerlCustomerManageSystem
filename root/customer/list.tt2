@@ -1,0 +1,19 @@
+[% title = 'Customer List' headerText = 'Customer List' %]
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Customer Name</th>
+            <th>Email Address</th>
+            <th>Phone Number</th>
+        </tr>
+        </thead>
+        <tbody>
+	[% FOREACH customer IN customers %]
+	<tr>
+	    <td>[% customer.name %]</td>
+            <td>[% customer.email %]</td>
+	    <td>[% customer.phone_number %]</td>
+	</tr>	
+	[% END %]
+        </tbody>
+    </table>
