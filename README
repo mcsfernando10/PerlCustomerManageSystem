@@ -21,6 +21,11 @@ sudo cpanm Catalyst::View::TT
 perl -MCatalyst::Runtime -e 'print $Catalyst::Runtime::VERSION'
 perl -MMoose -e 'print $Moose::VERSION'
 
+## Used Versions
+Perl    : Perl 5 Version 16
+Moose   : 2.2207
+Catalyst: 5.90131
+
 ## Install Catalyst::Devel
 sudo cpanm Catalyst::Devel
 
