@@ -1,0 +1,48 @@
+[% IF customer.id %]
+   [% textToShow = 'Update' actionURL = '/customer/update_data' %]
+[% ELSE %]
+   [% textToShow = 'Create' actionURL = '/customer/create_new' %]
+[% END %]
+
+[% title = textToShow _ ' Customer' %]
+[% headerText = textToShow _ ' Customer' %]
+
+<style>
+    .content-container {
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+    }
+
+    .content-box {
+        width: 100%;
+        max-width: 500px;
+        padding: 15px;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<div class="container form-container">
+    <div class="form-box">
+        <form action="[% actionURL %]" method="post">
+            <input type="hidden" id="id" name="id" value="[% customer.id || ''%]">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" value="[% customer.name || '' %]" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" value="[% customer.email || '' %]" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" class="form-control" id="phone" name="phone" value="[% customer.phone_number || '' %]" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">
+                 [% textToShow %]
+            </button>
+        </form>
+    </div>
+</div>
