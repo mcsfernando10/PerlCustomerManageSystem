@@ -1,0 +1,24 @@
+[% title = 'New Customer creation successful' headerText = 'New Customer creation successful' %]
+<style>
+    .content-container {
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+    }
+
+    .content-box {
+        width: 100%;
+        max-width: 500px;
+        padding: 15px;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<div class="container content-container">
+    <div class="content-box text-center">
+        <p>Your customer has been created successfully.</p>
+        <a href="/customer/list" class="btn btn-primary btn-block">View Customer List</a>
+    </div>
+</div>

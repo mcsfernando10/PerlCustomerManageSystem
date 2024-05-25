@@ -6,6 +6,39 @@ BEGIN { extends 'Catalyst::Controller'; }
 
 __PACKAGE__->config(namespace => 'customer');
 
+
+sub create :Local :FormConfig {
+    my ($self, $c) = @_;
+
+    # Display the form to create new customer
+    $c->stash(template => 'customer/create.tt2');
+}
+
+sub createnew :Local {
+    my ($self, $c) = @_;
+    my $params = $c->request->params;
+
+    if ($c->request->method eq 'POST') {
+        my $name  = $params->{name};
+        my $email = $params->{email};
+        my $phoneNo = $params->{phone};
+
+        my $customer = $c->model('DB::Customer')->create({
+            name  => $name,
+            email => $email,
+            phone_number => $phoneNo
+        });
+
+        # Redirect to a confirmation page or display a success message
+        $c->response->redirect($c->uri_for('/customer/success'));
+    }
+}
+
+sub success :Local {
+    my ($self, $c) = @_;
+    $c->stash(template => 'customer/success.tt2');
+}
+
 sub list :Local {
     my ($self, $c) = @_;
 
