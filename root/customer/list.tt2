@@ -1,4 +1,7 @@
 [% title = 'Customer List' headerText = 'Customer List' %]
+[% IF customers.size == 0 %]
+    <p style="font-size: 20px; text-align: center;">No customers found.</p>
+[% ELSE %]
 <table class="table">
     <thead>
         <tr>
@@ -24,4 +27,5 @@
 	[% END %]
     </tbody>
 </table>
+[% END %]
 <a href="/customer/create" class="btn btn-success">Create Customer</a>
