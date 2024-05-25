@@ -1,9 +1,9 @@
-[% title = 'New Customer creation successful' headerText = 'New Customer creation successful' %]
+[% title = text headerText = '' %]
 <style>
     .content-container {
         display: flex;
         justify-content: center;
-        align-items: center; 
+        align-items: center;
     }
 
     .content-box {
@@ -18,7 +18,7 @@
 
 <div class="container content-container">
     <div class="content-box text-center">
-        <p>Your customer has been created successfully.</p>
-        <a href="/customer/list" class="btn btn-primary btn-block">View Customer List</a>
+        <p class="text-[% status %] fs-3">[% text %]</p>
+        <a href="/customer/list" class="btn btn-light btn-block">View Customer List</a>
     </div>
 </div>

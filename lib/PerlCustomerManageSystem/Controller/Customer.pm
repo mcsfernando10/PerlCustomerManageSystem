@@ -30,14 +30,21 @@ sub create_new :Local {
             phone_number => $phoneNo
         });
 
-        # Redirect to a confirmation page or display a success message
-        $c->response->redirect($c->uri_for('/customer/success'));
+	if ($customer) {
+            ## Display success message
+            displayPageWithMsg($c, "Customer creation is Successful!", "primary");
+	} else {
+	    ## Display error message
+            displayPageWithMsg($c, "Something went wrong. Customer creation is Failed!", "danger");
+	}
     }
 }
 
-sub success :Local {
-    my ($self, $c) = @_;
-    $c->stash(template => 'customer/success.tt2');
+sub displayPageWithMsg {
+    my ($c, $text, $status) = @_;
+    $c->stash(text     => $text);
+    $c->stash(status   => $status);
+    $c->stash(template => 'customer/display_message.tt2');
 }
 
 sub list :Local {
@@ -82,6 +89,24 @@ sub update_data :Local {
         # Redirect to customer list view
         $c->response->redirect($c->uri_for('/customer/list'));
     }
+}
+
+sub delete :Local {
+    my ($self, $c) = @_;
+    my $params = $c->request->params;
+    my $id = $params->{id};
+    ## Get customer data which is related to passed customer ID
+    my $customer = $c->model('DB::Customer')->find($id);
+
+    if ($customer) {
+        $customer->delete;
+	## Display success message
+	displayPageWithMsg($c, "Customer deletion is Successful!", "primary");
+    } else {
+	## Display error message
+	displayPageWithMsg($c, "Something went wrong. Customer deletion is Failed!", "danger");
+    }
+
 }
 
 __PACKAGE__->meta->make_immutable;
