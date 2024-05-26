@@ -1,19 +1,35 @@
 [% title = 'Customer List' headerText = 'Customer List' %]
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Customer Name</th>
-            <th>Email Address</th>
-            <th>Phone Number</th>
-        </tr>
-        </thead>
-        <tbody>
-	[% FOREACH customer IN customers %]
-	<tr>
-	    <td>[% customer.name %]</td>
-            <td>[% customer.email %]</td>
-	    <td>[% customer.phone_number %]</td>
-	</tr>	
-	[% END %]
-        </tbody>
-    </table>
+[% IF customers.size == 0 %]
+    <p style="font-size: 20px; text-align: center;">No customers found.</p>
+[% ELSE %]
+<div style="padding: 0px 20px">
+	<table class="table table-bordered">
+	    <thead>
+		<tr>
+		    <th>Customer Name</th>
+		    <th>Email Address</th>
+		    <th>Phone Number</th>
+		    <th>Actions</th>
+		</tr>
+	    </thead>
+	    <tbody>
+		[% FOREACH customer IN customers %]
+		<tr>
+		    <td>[% customer.name %]</td>
+		    <td>[% customer.email %]</td>
+		    <td>[% customer.phone_number %]</td>
+		    <td>
+			<a href="/customer/update?id=[% customer.id %]" class="btn btn-primary btn-sm">Update</a>
+			<form action="/customer/delete?id=[% customer.id %]" method="post" style="display:inline;">
+			    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
+			</form>
+		    </td>
+		</tr>	
+		[% END %]
+	    </tbody>
+	</table>
+</div>
+[% END %]
+<div style="text-align: center;">
+	<a href="/customer/create" class="btn btn-success">Create Customer</a>
+</div>
